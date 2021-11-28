@@ -14,6 +14,8 @@ export default function Entrada(props: EntradaPropos) {
             </label>
             <input
                 type={props.tipo ?? 'text'}
+                step=".01"
+                max="1"
                 value={props.valor}
                 readOnly={props.somenteLeitura}
                 onChange={e => props.valorMudou?.(e.target.value)}

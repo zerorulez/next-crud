@@ -93,20 +93,22 @@ export default function Home() {
         <title>Produtos</title>
       </Head>
       <Layout titulo="Produtos">
-        <div className="flex justify-end">
-          <Botao
-            cor="green"
-            onClick={() => novoProduto()}  
-          >
-            Novo Produto
-          </Botao>
-        </div>
         {visivel === 'tabela' ? (
-          <Tabela
-            produtos={produtos}
-            produtoSelecionado={produtoSelecionado}
-            produtoExcluido={produtoExcluido}
-          ></Tabela>
+          <div>
+            <div className="flex justify-end">
+              <Botao
+                cor="green"
+                onClick={() => novoProduto()}  
+              >
+                Novo Produto
+              </Botao>
+            </div>
+            <Tabela
+              produtos={produtos}
+              produtoSelecionado={produtoSelecionado}
+              produtoExcluido={produtoExcluido}
+            ></Tabela>
+          </div>
         ): (
           <Formulario
             produto={produto}

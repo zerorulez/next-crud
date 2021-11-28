@@ -33,9 +33,9 @@ export default function Tabela(props: TabelaProps) {
                     className={`${index % 2 === 0 ? 'bg-purple-200' : 'bg-purple-100'}`}>
                     <td className="text-left p-4">{produto.id}</td>
                     <td className="text-left p-4">{produto.nome}</td>
-                    <td className="text-left p-4">{'R$ ' + produto.preco}</td>
-                    <td className="text-left p-4">{produto.desconto * 100 + '%'}</td>
-                    <td className="text-left p-4">{'R$ ' + (produto.preco - (produto.preco * produto.desconto))}</td>
+                    <td className="text-left p-4">{'R$ ' + produto.preco.toFixed(2)}</td>
+                    <td className="text-left p-4">{(produto.desconto * 100).toFixed(2) + '%'}</td>
+                    <td className="text-left p-4">{'R$ ' + (produto.preco - (produto.preco * produto.desconto)).toFixed(2)}</td>
                     {exibirAcoes ? renderizarAcoes(produto) : false}
                 </tr>
             )
