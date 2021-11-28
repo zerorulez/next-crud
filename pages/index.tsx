@@ -78,6 +78,11 @@ export default function Home() {
     setProduto(Produto.vazio())
     setVisivel('form')
   }
+  
+  function voltarECarregar() {
+    pegarProdutos()
+    setVisivel('tabela')
+  }
 
   return (
     <div className={`
@@ -105,7 +110,7 @@ export default function Home() {
         ): (
           <Formulario
             produto={produto}
-            cancelado={() => setVisivel('tabela')}
+            cancelado={voltarECarregar}
             produtoMudou={salvarProduto}
           ></Formulario>
         )}

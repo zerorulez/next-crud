@@ -18,6 +18,7 @@ export default function Tabela(props: TabelaProps) {
                 <th className="text-left p-4">Nome</th>
                 <th className="text-left p-4">Preço</th>
                 <th className="text-left p-4">Desconto</th>
+                <th className="text-left p-4">Total</th>
                 {exibirAcoes ? (
                     <th className="p-4">Ações</th>
                 ) : false}
@@ -32,8 +33,9 @@ export default function Tabela(props: TabelaProps) {
                     className={`${index % 2 === 0 ? 'bg-purple-200' : 'bg-purple-100'}`}>
                     <td className="text-left p-4">{produto.id}</td>
                     <td className="text-left p-4">{produto.nome}</td>
-                    <td className="text-left p-4">{produto.preco}</td>
-                    <td className="text-left p-4">{produto.desconto}</td>
+                    <td className="text-left p-4">{'R$ ' + produto.preco}</td>
+                    <td className="text-left p-4">{produto.desconto * 100 + '%'}</td>
+                    <td className="text-left p-4">{'R$ ' + produto.preco * produto.desconto}</td>
                     {exibirAcoes ? renderizarAcoes(produto) : false}
                 </tr>
             )
