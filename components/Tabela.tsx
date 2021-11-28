@@ -35,7 +35,7 @@ export default function Tabela(props: TabelaProps) {
                     <td className="text-left p-4">{produto.nome}</td>
                     <td className="text-left p-4">{'R$ ' + produto.preco}</td>
                     <td className="text-left p-4">{produto.desconto * 100 + '%'}</td>
-                    <td className="text-left p-4">{'R$ ' + produto.preco * produto.desconto}</td>
+                    <td className="text-left p-4">{'R$ ' + (produto.preco - (produto.preco * produto.desconto))}</td>
                     {exibirAcoes ? renderizarAcoes(produto) : false}
                 </tr>
             )
