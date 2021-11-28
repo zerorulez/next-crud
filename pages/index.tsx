@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(pegarProdutos, [])
 
   function pegarProdutos() {
-    fetch('https://next-crud-liard-phi.vercel.app' + '/api/pegar-produtos')
+    fetch('/api/pegar-produtos')
     .then(res => res.json())
     .then(resposta => {
       setProdutos(resposta)
@@ -28,7 +28,7 @@ export default function Home() {
   }
 
   function produtoExcluido(produto: Produto) {
-    fetch('https://next-crud-liard-phi.vercel.app' + '/api/apagar-produto?id=' + produto.id)
+    fetch('/api/apagar-produto?id=' + produto.id)
     .then(() => {
       pegarProdutos()
       setVisivel('tabela')
@@ -37,7 +37,7 @@ export default function Home() {
 
   function salvarProduto(produto: Produto) {
     if (produto.id == null) {
-      fetch('https://next-crud-liard-phi.vercel.app' + '/api/salvar-produto', {
+      fetch('/api/salvar-produto', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ export default function Home() {
         setVisivel('tabela')
       })
     } else {
-      fetch('https://next-crud-liard-phi.vercel.app' + '/api/editar-produto', {
+      fetch('/api/editar-produto', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
