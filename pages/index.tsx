@@ -4,6 +4,7 @@ import Tabela from "../components/Tabela"
 import Formulario from "../components/Formulario"
 import Produto from "../core/Produto"
 import { useEffect, useState } from "react"
+import Head from 'next/head'
 
 export default function Home() {
 
@@ -14,7 +15,7 @@ export default function Home() {
   useEffect(pegarProdutos, [])
 
   function pegarProdutos() {
-    fetch('/api/pegar-produtos')
+    fetch(window.location.href + '/api/pegar-produtos')
     .then(res => res.json())
     .then(resposta => {
       setProdutos(resposta)
@@ -27,7 +28,7 @@ export default function Home() {
   }
 
   function produtoExcluido(produto: Produto) {
-    fetch('/api/apagar-produto?id=' + produto.id)
+    fetch(window.location.href + '/api/apagar-produto?id=' + produto.id)
     .then(() => {
       pegarProdutos()
       setVisivel('tabela')
@@ -36,7 +37,7 @@ export default function Home() {
 
   function salvarProduto(produto: Produto) {
     if (produto.id == null) {
-      fetch('/api/salvar-produto', {
+      fetch(window.location.href + '/api/salvar-produto', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -53,7 +54,7 @@ export default function Home() {
         setVisivel('tabela')
       })
     } else {
-      fetch('/api/editar-produto', {
+      fetch(window.location.href + '/api/editar-produto', {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -83,6 +84,9 @@ export default function Home() {
       flex h-screen justify-center items-center bg-gradient-to-r 
       from-purple-500 to-blue-500 text-white
     `}>
+      <Head>
+        <title>Produtos</title>
+      </Head>
       <Layout titulo="Produtos">
         <div className="flex justify-end">
           <Botao
